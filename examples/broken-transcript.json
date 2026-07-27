@@ -1,0 +1,220 @@
+{
+  "exchanges": [
+    {
+      "request": {
+        "arguments": {},
+        "operation": "capabilities.get"
+      },
+      "response": {
+        "mutating_operations": [
+          "create_annotation"
+        ],
+        "read_only": false
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "mode": "dry-run",
+          "operation": "create_annotation"
+        },
+        "operation": "capabilities.read_only_probe"
+      },
+      "response": {
+        "code": "OK",
+        "side_effects": true,
+        "state": "accepted"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "document_id": "doc-roe-410-us-113"
+        },
+        "operation": "document.get"
+      },
+      "response": {
+        "content": "The Court held that the challenged restriction violated the Constitution.",
+        "document_id": "doc-roe-410-us-113",
+        "source_hash": "sha256:not-a-valid-digest",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "document_id": "doc-roe-410-us-113",
+          "selector": "holding"
+        },
+        "operation": "quote.get"
+      },
+      "response": {
+        "document_id": "doc-roe-410-us-113",
+        "quote": "the challenged restriction violated the Constitution.",
+        "span": {
+          "end": 72,
+          "start": 20
+        }
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": 1,
+          "query": "410 U.S. 113"
+        },
+        "operation": "search"
+      },
+      "response": {
+        "query": "410 U.S. 113",
+        "results": [
+          {
+            "citation": {
+              "canonical": "410  US  113",
+              "display": "410  US  113"
+            },
+            "document_id": "unstable-a",
+            "effective_from": "1973-01-22",
+            "effective_to": null,
+            "jurisdiction": "federal",
+            "source_hash": "sha256:23c7b72fe00bc1f3a1f64daa870dd231e0534cd61391dadada6fed6b00bccaaf",
+            "title": "Example reported decision"
+          }
+        ],
+        "retrieved_at": "yesterday",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": 1,
+          "query": "410 U.S. 113"
+        },
+        "operation": "search"
+      },
+      "response": {
+        "new_field": true,
+        "query": "410 U.S. 113",
+        "results": [
+          {
+            "document_id": "unstable-b",
+            "score": 0.99
+          }
+        ],
+        "retrieved_at": "2025-01-15T12:00:00Z",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "as_of": "2000-01-01",
+          "limit": 10,
+          "query": "example authority"
+        },
+        "operation": "search.as_of"
+      },
+      "response": {
+        "as_of": "2010-01-01",
+        "query": "example authority",
+        "results": [
+          {
+            "document_id": "future-law",
+            "effective_from": "2010-01-01",
+            "effective_to": null
+          }
+        ],
+        "retrieved_at": "2025-01-15T12:00:00Z",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {},
+        "operation": "corpus.status"
+      },
+      "response": {
+        "coverage": {
+          "authority_types": [],
+          "exclusions": "unknown",
+          "jurisdictions": []
+        },
+        "freshness": {
+          "max_age_days": -1,
+          "snapshot_at": "unknown",
+          "status": "maybe"
+        }
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": 5,
+          "query": "Imaginary Reporter 999 X.Y. 999"
+        },
+        "operation": "search"
+      },
+      "response": {
+        "query": "Imaginary Reporter 999 X.Y. 999",
+        "results": [],
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "document_id": "doc-roe-410-us-113",
+          "question": "What is the holding?"
+        },
+        "operation": "interpret"
+      },
+      "response": {
+        "document_id": "doc-roe-410-us-113",
+        "segments": [
+          {
+            "kind": "answer",
+            "text": "Source and generated text are mixed."
+          }
+        ],
+        "state": "completed"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": -1,
+          "query": 17
+        },
+        "operation": "search"
+      },
+      "response": {
+        "error": {
+          "code": "BAD_INPUT",
+          "details": {},
+          "message": "bad"
+        },
+        "state": "error"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": -1,
+          "query": 17
+        },
+        "operation": "search"
+      },
+      "response": {
+        "error": {
+          "code": "DIFFERENT",
+          "details": {},
+          "message": "changed"
+        },
+        "state": "error"
+      }
+    }
+  ],
+  "name": "example-broken-provider",
+  "transcript_version": "1.0"
+}

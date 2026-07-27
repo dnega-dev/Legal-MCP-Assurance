@@ -1,0 +1,219 @@
+{
+  "exchanges": [
+    {
+      "request": {
+        "arguments": {},
+        "operation": "capabilities.get"
+      },
+      "response": {
+        "mutating_operations": [],
+        "read_only": true,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "mode": "dry-run",
+          "operation": "create_annotation"
+        },
+        "operation": "capabilities.read_only_probe"
+      },
+      "response": {
+        "code": "READ_ONLY",
+        "side_effects": false,
+        "state": "rejected"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "document_id": "doc-roe-410-us-113"
+        },
+        "operation": "document.get"
+      },
+      "response": {
+        "content": "The Court held that the challenged restriction violated the Constitution.",
+        "document_id": "doc-roe-410-us-113",
+        "media_type": "text/plain",
+        "source_hash": "sha256:23c7b72fe00bc1f3a1f64daa870dd231e0534cd61391dadada6fed6b00bccaaf",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "document_id": "doc-roe-410-us-113",
+          "selector": "holding"
+        },
+        "operation": "quote.get"
+      },
+      "response": {
+        "document_id": "doc-roe-410-us-113",
+        "quote": "the challenged restriction violated the Constitution",
+        "span": {
+          "end": 72,
+          "start": 20,
+          "unit": "unicode-code-point"
+        }
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": 1,
+          "query": "410 U.S. 113"
+        },
+        "operation": "search"
+      },
+      "response": {
+        "query": "410 U.S. 113",
+        "results": [
+          {
+            "citation": {
+              "canonical": "410 U.S. 113",
+              "display": "Example Decision, 410 U.S. 113 (1973)",
+              "normalization": "reporter-volume-page"
+            },
+            "document_id": "doc-roe-410-us-113",
+            "effective_from": "1973-01-22",
+            "effective_to": null,
+            "jurisdiction": {
+              "code": "us-federal",
+              "court": "Supreme Court of the United States",
+              "name": "United States"
+            },
+            "source_hash": "sha256:23c7b72fe00bc1f3a1f64daa870dd231e0534cd61391dadada6fed6b00bccaaf",
+            "title": "Example reported decision"
+          }
+        ],
+        "retrieved_at": "2025-01-15T12:00:00Z",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "as_of": "2000-01-01",
+          "limit": 10,
+          "query": "example authority"
+        },
+        "operation": "search.as_of"
+      },
+      "response": {
+        "as_of": "2000-01-01",
+        "query": "example authority",
+        "results": [
+          {
+            "document_id": "doc-example-1995",
+            "effective_from": "1995-06-01",
+            "effective_to": null
+          }
+        ],
+        "retrieved_at": "2025-01-15T12:00:00Z",
+        "state": "found"
+      }
+    },
+    {
+      "request": {
+        "arguments": {},
+        "operation": "corpus.status"
+      },
+      "response": {
+        "coverage": {
+          "authority_types": [
+            "reported-decisions"
+          ],
+          "exclusions": [
+            "sealed records",
+            "unpublished materials not in the declared source corpus"
+          ],
+          "jurisdictions": [
+            "us-federal"
+          ],
+          "publication_date_range": {
+            "from": "1790-01-01",
+            "through": "2025-01-15"
+          }
+        },
+        "freshness": {
+          "basis": "provider-declared source snapshot",
+          "max_age_days": 30,
+          "snapshot_at": "2025-01-15T00:00:00Z",
+          "status": "current"
+        }
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": 5,
+          "query": "Imaginary Reporter 999 X.Y. 999"
+        },
+        "operation": "search"
+      },
+      "response": {
+        "absence": {
+          "code": "NO_MATCH",
+          "message": "No matching authority was found in the declared corpus."
+        },
+        "query": "Imaginary Reporter 999 X.Y. 999",
+        "results": [],
+        "retrieved_at": "2025-01-15T12:00:00Z",
+        "state": "absent"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "document_id": "doc-roe-410-us-113",
+          "question": "What is the holding?"
+        },
+        "operation": "interpret"
+      },
+      "response": {
+        "document_id": "doc-roe-410-us-113",
+        "segments": [
+          {
+            "kind": "source_text",
+            "span": {
+              "end": 72,
+              "start": 20
+            },
+            "text": "the challenged restriction violated the Constitution"
+          },
+          {
+            "kind": "generated_interpretation",
+            "label": "Generated interpretation",
+            "text": "This generated summary describes the preceding source excerpt."
+          }
+        ],
+        "state": "completed"
+      }
+    },
+    {
+      "request": {
+        "arguments": {
+          "limit": -1,
+          "query": 17
+        },
+        "operation": "search"
+      },
+      "response": {
+        "error": {
+          "code": "INVALID_ARGUMENT",
+          "details": {
+            "fields": [
+              "query",
+              "limit"
+            ]
+          },
+          "message": "query must be a string and limit must be non-negative"
+        },
+        "state": "error"
+      }
+    }
+  ],
+  "name": "example-good-provider",
+  "transcript_version": "1.0"
+}
