@@ -1,5 +1,9 @@
 # Legal MCP Assurance
 
+[![CI](https://github.com/dnega-dev/Legal-MCP-Assurance/actions/workflows/ci.yml/badge.svg)](https://github.com/dnega-dev/Legal-MCP-Assurance/actions/workflows/ci.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-3776AB)](https://www.python.org/)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
 Legal MCP Assurance is a zero-runtime-dependency Python 3.9+ black-box assurance runner for adapters in front of legal and retrieval tool servers. It checks observable contracts around provenance, temporal semantics, corpus transparency, explicit absence, generated text separation, and deterministic interfaces.
 
 It **does not implement MCP transport**. A provider adapter is responsible for translating the profile's canonical operations to the target server. The included JSON transcript provider makes runs deterministic and usable offline.
