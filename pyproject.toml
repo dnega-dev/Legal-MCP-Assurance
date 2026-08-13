@@ -24,6 +24,12 @@ classifiers = [
 ]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/dnega-dev/Legal-MCP-Assurance"
+Repository = "https://github.com/dnega-dev/Legal-MCP-Assurance"
+Issues = "https://github.com/dnega-dev/Legal-MCP-Assurance/issues"
+Changelog = "https://github.com/dnega-dev/Legal-MCP-Assurance/blob/main/CHANGELOG.md"
+
 [project.scripts]
 legal-mcp-assurance = "legal_mcp_assurance.cli:main"
 
